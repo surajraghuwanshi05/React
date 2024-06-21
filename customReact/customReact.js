@@ -12,9 +12,14 @@ function customRender(reactElement, Container){
    const domElement = document.createElement
    (reactElement.type)
    domElement.innerHTML = reactElement.Children
-   for (const prop in props){
+   for (const prop in reactElement.props){
+    if (prop === 'Children') continue;
+    domElement.setAttribute(prop, reactElement.props[prop])
+
+
     
    }
+   Container.appendChild(domElement)
 }
 
 const reactElement = {
